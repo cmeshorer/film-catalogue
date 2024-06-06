@@ -1,13 +1,13 @@
 # ℹ️ Introduction
 
-This is an app that displays popular films and their reviews. The Frontend is built in React & the Backend in Express. Movie data is retrived using The Movie Database (TMDB) API.
+This is an app that displays popular films and their reviews. The Frontend is built in React & the Backend in Express. Movie data is retrieved using The Movie Database (TMDB) API.
 
 # ✅ Features
 
-- Access is restricted for two fictional users
 - Explore the most popular movies right now (based on TMDB's scoring criteria)
 - Filter by French movies
 - Decide what to watch based on other people's reviews
+- Access is restricted to 2 fictional users
 
 # 💾 Technical
 
