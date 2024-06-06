@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import LoginScreen from "./screens/login/component";
+import FilmListScreen from "./screens/film-list/component";
+import FilmCommentsScreen from "./screens/film-comments/component";
+import { useAuthStore } from "./store";
 
 function App() {
+  const storedToken = localStorage.getItem("token");
+  const setToken = useAuthStore((state) => state.storeToken);
+  if (storedToken) setToken(storedToken);
+  const token = useAuthStore((state) => state.token);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      {token ? (
+        <Route>
+          <Route path="/films" element={<FilmListScreen />} />
+          <Route path="/comments/:id" element={<FilmCommentsScreen />} />
+        </Route>
+      ) : (
+        <Route path="/" element={<LoginScreen />} />
+      )}
+    </Routes>
   );
 }
 
